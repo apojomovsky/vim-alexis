@@ -25,6 +25,9 @@ Plug 'inkarkat/vim-SpellCheck'
 " vim-plug list ends here.
 call plug#end()
 
+" Fix for the weird characters shown in terminator.
+set guicursor=
+
 " Indentation
 set expandtab
 set shiftwidth=2
