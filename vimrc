@@ -3,11 +3,15 @@ call plug#begin('~/.vim/plugged')
 
 " List of plugins for vim-plug
 Plug 'flazz/vim-colorschemes'
+Plug 'kien/ctrlp.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvie/vim-flake8'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-grammarous'
 Plug 'scrooloose/nerdtree'
+Plug 'suoto/vim-hdl'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tomtom/tcomment_vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
@@ -25,8 +29,21 @@ Plug 'inkarkat/vim-SpellCheck'
 " vim-plug list ends here.
 call plug#end()
 
+" Automatically reload file
+set autoread
+
+" Show line number
+set number
+
+" Show 80 char column bar
+set colorcolumn=80
+
+" Copy vim buffer to clipboard
+set clipboard=unnamedplus
+
 " Fix for the weird characters shown in terminator.
-set guicursor=
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+" set guicursor=
 
 " Indentation
 set expandtab
@@ -34,7 +51,7 @@ set shiftwidth=2
 set softtabstop=2
 filetype plugin indent on
 
-" Add capital letters
+" Make save and quit commands case independent
 command! Q  quit
 command! W  write
 
@@ -46,7 +63,7 @@ let g:airline_theme = 'codedark'
 
 " Temporal Workaround for neovim's
 " https://github.com/neovim/neovim/issues/7369
-highlight Normal ctermbg=NONE
+" highlight Normal ctermbg=NONE
 
 " Navigate through open files
 nnoremap H gT
@@ -54,6 +71,9 @@ nnoremap L gt
 
 " NERD tree
 map <F2> <ESC>:NERDTreeToggle<CR>
+
+" Tagbar
+nmap <F5> :TagbarToggle<CR>
 
 " Clear search highlight
 nnoremap <cr> :noh<CR><CR>:<backspace>
@@ -63,7 +83,9 @@ nnoremap <cr> :noh<CR><CR>:<backspace>
  nnoremap N Nzz
 
 " indentLine settings
-let g:indentLine_char = '▏'
+ let g:indentLine_char = '▏'
+"let g:indentLine_setColors = 0
+
 
 " Syntastic settings
 set statusline+=%#warningmsg#
